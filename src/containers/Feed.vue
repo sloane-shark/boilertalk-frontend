@@ -4,7 +4,8 @@
     setNameForm(v-if='participant === ""')
     template(v-else)
       postComposer
-      post(v-for='(post, index) in posts' :post='post' :key='post.id' :index='index')
+      template(v-for='(post, index) in posts')
+        post(:post='post' :date='new Date()')
 </template>
 
 <script>
@@ -23,6 +24,8 @@ export default {
         id: 0,
         type: 'text',
         content: 'hello, world!',
+        image: null,
+        link: null,
         author: 'mat',
         likes: 1,
         dislikes: 0,
@@ -33,7 +36,9 @@ export default {
       {
         id: 1,
         type: 'link',
-        content: 'http://google.com',
+        content: 'Google.com | google.com',
+        image: 'https://www.google.org/assets/static/images/logo_googledotorg-171e7482e5523603fc0eed236dd772d8.svg',
+        link: 'http://google.com',
         author: 'mack',
         likes: 0,
         dislikes: 1,
@@ -45,6 +50,8 @@ export default {
         id: 2,
         type: 'event',
         content: 'House Party @ 10:30',
+        image: 'https://az616578.vo.msecnd.net/files/2016/08/29/636080871731388695-440853176_Party-people-background.jpg',
+        link: null,
         author: 'pablo',
         likes: 2,
         dislikes: 3,

@@ -2352,11 +2352,12 @@ eslint-plugin-import@^2.7.0:
     minimatch "^3.0.3"
     read-pkg-up "^2.0.0"
 
-eslint-plugin-vue@^4.0.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-4.2.0.tgz#25fade387bf9a97377cf0e5cd17ef0d60ac9da57"
+eslint-plugin-vue@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-3.14.0.tgz#8d2462b7dcf840a353b7eb5a92e6394581d5d697"
   dependencies:
-    vue-eslint-parser "^2.0.1"
+    requireindex "^1.1.0"
+    vue-eslint-parser "^2.0.1-beta.1"
 
 eslint-restricted-globals@^0.1.1:
   version "0.1.1"
@@ -3887,10 +3888,6 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
-
-link-prevue@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/link-prevue/-/link-prevue-1.1.3.tgz#62617fd63f52dc8661501c9cd113fbb768076311"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -5695,6 +5692,10 @@ require-uncached@^1.0.3:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
 
+requireindex@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
+
 requires-port@1.0.x, requires-port@1.x.x, requires-port@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
@@ -6693,7 +6694,7 @@ vue-avatar@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/vue-avatar/-/vue-avatar-2.1.1.tgz#98b39bbf64b1b3d5a6dcf731e7f6611a6caa46ad"
 
-vue-eslint-parser@^2.0.1:
+vue-eslint-parser@^2.0.1-beta.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.2.tgz#8d603545e9d7c134699075bd1772af1ffd86b744"
   dependencies:
