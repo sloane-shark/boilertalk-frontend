@@ -1,37 +1,19 @@
 <template lang="pug">
 #feed-settings
   box(title='Feed Settings')
-    textPost(
-      :post=`{ author: "mat",
-        content: "hello world!"}`
-      :date='new Date()'
-    )
-    textPost(
-      :post=`{ author: "mack",
-        content: "hello world!",
-        meta: ""}`
-      :date='new Date()'
-    )
-    linkPost(
-      :post=`{ author: "jay",
-        content: "http://google.com/"}`
-      :date='new Date()'
-    )
-    eventPost(
-      :post=`{ author: "pablo",
-        content: "Tuesday @ 10pm"}`
-      :date='new Date()'
-    )
+    h1.title.is-4 New Post
+    newPostForm
+    .is-divider
+    h1.title.is-4 Edit Feed
+    editFeedForm
 </template>
 
 <script>
 import box from '@/components/box';
-import textPost from '@/components/feed/textPost';
-import linkPost from '@/components/feed/linkPost';
-import eventPost from '@/components/feed/eventPost';
+import newPostForm from '@/components/admin/newPostForm';
 
 export default {
   name: 'FeedSettings',
-  components: { box, textPost, eventPost, linkPost },
+  components: { box, newPostForm },
 };
 </script>
