@@ -1,5 +1,6 @@
 const state = {
   researchers: [],
+  feed: [],
   error: false,
   errorMessage: '',
 };

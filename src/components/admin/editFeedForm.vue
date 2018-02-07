@@ -1,7 +1,7 @@
 <template lang="pug">
 .edit-feed
   draggable
-  button.button.is-primary Add Post
+  button.button.is-primary Submit Feed
 </template>
 
 <script>
