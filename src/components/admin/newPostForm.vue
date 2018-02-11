@@ -1,34 +1,50 @@
 <template lang="pug">
 .new-post
-  textField(v-model='content' label='Text Content' placeholder='Hello World!')
-  textField(v-model='image' label='Image URL' placeholder='http://example.com/image.png')
-  textField(v-model='link' label='Link URL' placeholder='http://google.com/')
-  button.button.is-primary(@click='addPost({ content, image, link })') Add Post
+  .field.is-grouped
+    textField(v-model='post.content' label='Text Content' placeholder='Hello World!')
+    textField(v-model='post.image' label='Image URL' placeholder='http://abc.com/image.png')
+    textField(v-model='post.link' label='Link URL' placeholder='http://google.com/')
+  .field.is-grouped
+    textField(v-model='post.author' label='Author Name' placeholder='Boilertalk')
+    dropdown(v-model='post.postType' label='Post Type' :options='["text", "event", "link"]')
+  button.button.is-primary(@click='addPost(post)') Add Post
 </template>
 
 <script>
 import textField from '@/components/textField';
+import dropdown from '@/components/dropdown';
 import types from '@/store/modules/admin/types';
 
 export default {
   name: 'newPostForm',
-  components: { textField },
+  components: { textField, dropdown },
   data() {
     return {
-      content: '',
-      image: '',
-      link: '',
+      post: {
+        content: '',
+        image: '',
+        link: '',
+        author: '',
+        postType: 'text',
+      },
     };
   },
   methods: {
-    addPost({ content, image, link }) {
+    addPost({ content, image, link, author, postType }) {
+      if (content === '' || author === '') {
+        this.$store.commit(types.mutation.SET_ERROR, 'Include post content and author.');
+        return;
+      }
       const post = {
         content,
+        author,
+        postType,
         // add image + link if not empty
         ...(image !== '' && { image }),
         ...(link !== '' && { link }),
       };
       this.$store.commit(types.mutation.ADD_TO_FEED, post);
+      this.$store.commit(types.mutation.CLEAR_ERROR);
       this.content = '';
       this.image = '';
       this.link = '';
@@ -36,3 +52,8 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.field > *
+  margin-right: 1rem
+</style>

@@ -4,7 +4,7 @@
     setNameForm(v-if='participant === ""')
     template(v-else)
       postComposer
-      template(v-for='(post, index) in posts')
+      template(v-for='(post, index) in feed.posts')
         post(:post='post' :date='new Date()')
 </template>
 
@@ -14,6 +14,7 @@ import box from '@/components/box';
 import post from '@/components/feed/post';
 import setNameForm from '@/components/feed/setNameForm';
 import postComposer from '@/components/feed/postComposer';
+import types from '@/store/modules/feed/types';
 
 export default {
   name: 'Feed',
@@ -160,6 +161,7 @@ export default {
   },
   computed: {
     ...mapState({
+      feed: state => state.feed.feed,
       participant: state => state.feed.participant,
       experimenterCode: state => state.feed.experimenterCode,
     }),
@@ -168,6 +170,7 @@ export default {
     if (this.experimenterCode === null) {
       this.$router.push('login');
     }
+    this.$store.dispatch(types.action.FETCH_LATEST_FEED);
   },
 };
 </script>

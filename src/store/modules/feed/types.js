@@ -1,7 +1,8 @@
 const types = {
   action: {
     OPEN_FEED: 'openFeed',
-    SUBMIT_FEED: 'submitFeed',
+    SUBMIT_RESULTS: 'submitResults',
+    FETCH_LATEST_FEED: 'fetchLatestFeed',
   },
   mutation: {
     SET_EXPERIMENTER_CODE: 'setExperimenterCode',
