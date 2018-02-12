@@ -21,9 +21,9 @@ export default {
   methods: {
     changePassword(password, confirm) {
       if (password === confirm) {
-        this.$store.dispatch(types.action.CHANGE_PASSWORD, password);
+        this.$store.dispatch(`admin/${types.action.CHANGE_PASSWORD}`, password);
       } else {
-        this.$store.commit(types.mutation.SET_ERROR, 'Passwords must match.');
+        this.$store.commit(`admin/${types.mutation.SET_ERROR}`, 'Passwords must match.');
       }
       this.password = '';
       this.confirm = '';

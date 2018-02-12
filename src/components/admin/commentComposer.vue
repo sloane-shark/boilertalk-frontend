@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     commentPostAndHide(payload) {
-      this.$store.commit(types.mutation.COMMENT_POST, payload);
+      this.$store.commit(`admin/${types.mutation.COMMENT_POST}`, payload);
       this.$emit('hideComposer');
     },
   },

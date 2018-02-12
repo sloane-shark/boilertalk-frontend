@@ -5,15 +5,18 @@ const mutations = {
   setParticipant(state, name) {
     state.participant = name;
   },
-  clearFeed(state) {
+  clearParticipant(state) {
     state.experimenterCode = null;
     state.participant = '';
   },
-  setErrorFeed(state, message) {
+  setFeed(state, feed) {
+    state.feed = feed;
+  },
+  setError(state, message) {
     state.error = true;
     state.errorMessage = message;
   },
-  clearErrorFeed(state) {
+  clearError(state) {
     state.error = false;
     state.errorMessage = '';
   },

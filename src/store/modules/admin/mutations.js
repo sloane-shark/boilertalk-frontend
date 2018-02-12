@@ -55,11 +55,11 @@ const mutations = {
     state.feedModified = true;
     state.feed.splice(index, 1);
   },
-  setErrorAdmin(state, message) {
+  setError(state, message) {
     state.error = true;
     state.errorMessage = message;
   },
-  clearErrorAdmin(state) {
+  clearError(state) {
     state.error = false;
     state.errorMessage = '';
   },

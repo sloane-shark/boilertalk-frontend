@@ -10,9 +10,11 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import draggable from 'vuedraggable';
 import types from '@/store/modules/admin/types';
+
+const { mapMutations } = createNamespacedHelpers('admin');
 
 export default {
   name: 'comments',
@@ -25,7 +27,7 @@ export default {
       },
       set(value) {
         this.$store.commit(
-          types.mutation.SET_COMMENTS_FOR_POST,
+          `admin/${types.mutation.SET_COMMENTS_FOR_POST}`,
           { index: this.index, comments: value },
         );
       },

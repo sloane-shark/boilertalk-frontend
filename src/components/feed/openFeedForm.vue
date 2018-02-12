@@ -21,9 +21,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import types from '@/store/modules/feed/types';
 import textField from '@/components/textField';
+
+const { mapState, mapActions } = createNamespacedHelpers('feed');
 
 export default {
   name: 'openFeedForm',
@@ -41,8 +43,8 @@ export default {
   },
   computed: {
     ...mapState({
-      error: state => state.feed.error,
-      errorMessage: state => state.feed.errorMessage,
+      error: state => state.error,
+      errorMessage: state => state.errorMessage,
     }),
   },
 };

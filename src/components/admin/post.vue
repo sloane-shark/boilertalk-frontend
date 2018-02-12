@@ -46,12 +46,14 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import types from '@/store/modules/admin/types';
 import card from '@/components/card';
 import userMedia from '@/components/feed/userMedia';
 import comments from '@/components/admin/comments';
 import commentComposer from '@/components/admin/commentComposer';
+
+const { mapMutations } = createNamespacedHelpers('admin');
 
 export default {
   name: 'postAdmin',

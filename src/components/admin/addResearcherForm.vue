@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     addResearcher(name, email) {
-      this.$store.dispatch(types.action.ADD_RESEARCHER, { name, email });
+      this.$store.dispatch(`admin/${types.action.ADD_RESEARCHER}`, { name, email });
       this.name = '';
       this.email = '';
       this.$emit('closeModal');

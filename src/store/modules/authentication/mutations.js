@@ -9,11 +9,11 @@ const mutations = {
     state.researcher = null;
     state.loggedIn = false;
   },
-  setErrorAuthentication(state, message) {
+  setError(state, message) {
     state.error = true;
     state.errorMessage = message;
   },
-  clearErrorAuthentication(state) {
+  clearError(state) {
     state.error = false;
     state.errorMessage = '';
   },

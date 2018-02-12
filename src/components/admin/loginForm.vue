@@ -21,9 +21,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import types from '@/store/modules/authentication/types';
 import textField from '@/components/textField';
+
+const { mapState, mapActions } = createNamespacedHelpers('authentication');
 
 export default {
   name: 'adminLoginForm',
@@ -41,8 +43,8 @@ export default {
   },
   computed: {
     ...mapState({
-      error: state => state.authentication.error,
-      errorMessage: state => state.authentication.errorMessage,
+      error: state => state.error,
+      errorMessage: state => state.errorMessage,
     }),
   },
 };

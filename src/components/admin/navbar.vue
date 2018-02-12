@@ -15,9 +15,11 @@ nav.navbar.is-info(role='navigation' aria-label='main navigation')
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import types from '@/store/modules/authentication/types';
 import navbarLink from '@/components/admin/navbarLink';
+
+const { mapActions } = createNamespacedHelpers('authentication');
 
 export default {
   name: 'navbar',

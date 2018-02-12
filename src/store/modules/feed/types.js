@@ -7,9 +7,10 @@ const types = {
   mutation: {
     SET_EXPERIMENTER_CODE: 'setExperimenterCode',
     SET_PARTICIPANT: 'setParticipant',
-    CLEAR_FEED: 'clearFeed',
-    SET_ERROR: 'setErrorFeed',
-    CLEAR_ERROR: 'clearErrorFeed',
+    CLEAR_PARTICIPANT: 'clearParticipant',
+    SET_FEED: 'setFeed',
+    SET_ERROR: 'setError',
+    CLEAR_ERROR: 'clearError',
   },
 };
 

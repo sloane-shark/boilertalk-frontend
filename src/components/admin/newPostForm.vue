@@ -32,7 +32,7 @@ export default {
   methods: {
     addPost({ content, image, link, author, postType }) {
       if (content === '' || author === '') {
-        this.$store.commit(types.mutation.SET_ERROR, 'Include post content and author.');
+        this.$store.commit(`admin/${types.mutation.SET_ERROR}`, 'Include post content and author.');
         return;
       }
       const post = {
@@ -43,8 +43,8 @@ export default {
         ...(image !== '' && { image }),
         ...(link !== '' && { link }),
       };
-      this.$store.commit(types.mutation.ADD_TO_FEED, post);
-      this.$store.commit(types.mutation.CLEAR_ERROR);
+      this.$store.commit(`admin/${types.mutation.ADD_TO_FEED}`, post);
+      this.$store.commit(`admin/${types.mutation.CLEAR_ERROR}`);
       this.content = '';
       this.image = '';
       this.link = '';

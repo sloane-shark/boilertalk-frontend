@@ -9,12 +9,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import box from '@/components/box';
 import post from '@/components/feed/post';
 import setNameForm from '@/components/feed/setNameForm';
 import postComposer from '@/components/feed/postComposer';
 import types from '@/store/modules/feed/types';
+
+const { mapState } = createNamespacedHelpers('feed');
 
 export default {
   name: 'Feed',
@@ -161,16 +163,16 @@ export default {
   },
   computed: {
     ...mapState({
-      feed: state => state.feed.feed,
-      participant: state => state.feed.participant,
-      experimenterCode: state => state.feed.experimenterCode,
+      feed: state => state.feed,
+      participant: state => state.participant,
+      experimenterCode: state => state.experimenterCode,
     }),
   },
   mounted() {
     if (this.experimenterCode === null) {
       this.$router.push('login');
     }
-    this.$store.dispatch(types.action.FETCH_LATEST_FEED);
+    this.$store.dispatch(`feed/${types.action.FETCH_LATEST_FEED}`);
   },
 };
 </script>

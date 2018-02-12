@@ -8,19 +8,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import types from '@/store/modules/authentication/types';
 import hero from '@/components/hero';
 import navbar from '@/components/admin/navbar';
+
+const { mapState } = createNamespacedHelpers('authentication');
 
 export default {
   name: 'App',
   components: { hero, navbar },
   computed: {
-    ...mapState({ loggedIn: state => state.authentication.loggedIn }),
+    ...mapState({ loggedIn: state => state.loggedIn }),
   },
   created() {
-    this.$store.dispatch(types.action.AUTH);
+    this.$store.dispatch(`authentication/${types.action.AUTH}`);
   },
 };
 </script>

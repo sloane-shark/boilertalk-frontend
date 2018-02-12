@@ -10,8 +10,8 @@ const types = {
     REMOVE_COMMENT_FROM_POST: 'removeCommentFromPost',
     SET_COMMENTS_FOR_POST: 'setCommentsForPost',
     REMOVE_FROM_FEED: 'removeFromFeed',
-    SET_ERROR: 'setErrorAdmin',
-    CLEAR_ERROR: 'clearErrorAdmin',
+    SET_ERROR: 'setError',
+    CLEAR_ERROR: 'clearError',
   },
   action: {
     FETCH_RESEARCHERS: 'fetchResearchers',

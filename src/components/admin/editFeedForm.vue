@@ -8,10 +8,12 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
 import draggable from 'vuedraggable';
 import types from '@/store/modules/admin/types';
 import post from '@/components/admin/post';
+
+const { mapActions, mapMutations } = createNamespacedHelpers('admin');
 
 export default {
   name: 'editFeedForm',
@@ -31,7 +33,7 @@ export default {
     ...mapMutations([types.mutation.RESET_FEED]),
   },
   mounted() {
-    this.$store.dispatch(types.action.FETCH_FEED);
+    this.$store.dispatch(`admin/${types.action.FETCH_FEED}`);
   },
 };
 </script>
