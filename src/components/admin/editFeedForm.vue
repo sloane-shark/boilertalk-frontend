@@ -33,7 +33,7 @@ export default {
     ...mapMutations([types.mutation.RESET_FEED]),
   },
   mounted() {
-    // this.$store.dispatch(`admin/${types.action.FETCH_FEED}`);
+    this.$store.dispatch(`admin/${types.action.FETCH_FEED}`);
   },
 };
 </script>
