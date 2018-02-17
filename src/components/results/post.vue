@@ -1,47 +1,22 @@
 <template lang="pug">
-.post
+.post(v-if='post.postType !== "hide"')
   card(:image='post.image')
     userMedia(:name='post.author', :date='date')
       template(v-if='post.postType === "text" || post.postType === "user"')
         p {{ post.content }}
-        p.
-          Likes {{ post.likes }}
-          | Dislikes {{ post.dislikes }}
-          | Comments {{ post.comments.length }}
+        p(v-if='post.liked') Liked
+        p(v-else-if='post.disliked') Disliked
       template(v-else-if='post.postType === "link"')
         a(:href='post.link') {{ post.content }}
-        p.
-          Likes {{ post.likes }}
-          | Dislikes {{ post.dislikes }}
-          | Comments {{ post.comments.length }}
+        p(v-if='post.liked') Liked
+        p(v-else-if='post.disliked') Disliked
       template(v-else-if='post.postType === "event"')
         p {{ post.content }}
-        p.
-          Going {{ post.likes }}
-          | Interested {{ post.dislikes }}
-          | Not Going {{ post.comments.length }}
-    template(slot='footer-items')
-      template(
-        v-if='post.postType === "text" || post.postType === "link" || post.postType === "user"'
-      )
-        a.card-footer-item(@click='composeComment(index)')
-          i.far.fa-comment
-          span &nbsp;Comment
-        a.card-footer-item(@click='toggleLikePost(index)')
-          i.far.fa-thumbs-up
-          span &nbsp;{{ post.liked ? 'Unlike' : 'Like' }}
-        a.card-footer-item(@click='toggleDislikePost(index)')
-          i.far.fa-thumbs-down
-          span &nbsp;{{ post.disliked ? 'Undislike' : 'Dislike' }}
-      template(v-else-if='post.postType === "event"')
-        a.card-footer-item(@click='toggleLikePost(index)') Going
-        a.card-footer-item(@click='toggleDislikePost(index)') Interested
-        //- a.card-footer-item Not Going
-  comments(:index='index' v-if='post.comments.length > 0 && post.postType != "event"')
-  commentComposer(
-    v-show='composing && composingIndex === index'
-    @hideComposer='composing = false'
-    :index='index'
+        p(v-if='post.liked') Going
+        p(v-else-if='post.disliked') Interested
+  comments(
+    :parentIndex='parentIndex'
+    :index='index' v-if='post.comments.length > 0 && post.postType != "event"'
   )
 </template>
 
@@ -49,16 +24,15 @@
 import { createNamespacedHelpers } from 'vuex';
 import card from '@/components/card';
 import userMedia from '@/components/feed/userMedia';
-import comments from '@/components/feed/comments';
-import commentComposer from '@/components/feed/commentComposer';
+import comments from '@/components/results/comments';
 import types from '@/store/modules/feed/types';
 
 const { mapMutations } = createNamespacedHelpers('feed');
 
 export default {
   name: 'post',
-  props: ['post', 'date', 'index'],
-  components: { card, userMedia, comments, commentComposer },
+  props: ['post', 'date', 'index', 'parentIndex'],
+  components: { card, userMedia, comments },
   data() {
     return {
       composing: false,

@@ -14,7 +14,11 @@ const actions = {
         commit(types.mutation.CLEAR_PARTICIPANT);
       });
   },
-  submitResults() {},
+  submitResults({ commit }, { feed, experimenterCode }) {
+    feathers.service('participants').patch(null, { feed }, { query: { experimenterCode } })
+      .then(() => router.push('done'))
+      .catch(() => commit(types.mutation.SET_ERROR, 'Oops! Something went wrong.'));
+  },
   fetchLatestFeed({ commit }) {
     feathers.service('feeds').find()
       .then((response) => {

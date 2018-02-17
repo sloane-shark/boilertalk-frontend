@@ -15,6 +15,8 @@ const types = {
     UNDISLIKE_POST: 'undislikePost',
     COMMENT_POST: 'commentPost',
     REMOVE_COMMENT_FROM_POST: 'removeCommentFromPost',
+    MAKE_POST: 'makePost',
+    DELETE_POST: 'deletePost',
     SET_ERROR: 'setError',
     CLEAR_ERROR: 'clearError',
   },

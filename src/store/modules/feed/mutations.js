@@ -29,10 +29,26 @@ const mutations = {
     state.feed.posts[index].dislikes -= 1;
   },
   commentPost(state, { index, body }) {
-    state.feed.posts[index].comments.push({ author: state.participant, body });
+    state.feed.posts[index].comments.push({ author: state.participant, body, user: true });
   },
   removeCommentFromPost(state, { index, subindex }) {
     state.feed.posts[index].comments.splice(subindex, 1);
+  },
+  makePost(state, body) {
+    state.feed.posts.unshift({
+      postType: 'user',
+      content: body,
+      author: state.participant,
+      user: true,
+      comments: [],
+      likes: 0,
+      dislikes: 0,
+      liked: false,
+      disliked: false,
+    });
+  },
+  deletePost(state, index) {
+    state.feed.posts.splice(index, 1);
   },
   setError(state, message) {
     state.error = true;
