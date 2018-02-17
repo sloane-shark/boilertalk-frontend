@@ -5,7 +5,7 @@
     template(v-else)
       postComposer
       template(v-for='(post, index) in feed.posts')
-        post(:post='post' :date='new Date()')
+        post(:post='post' :date='new Date()' :index='index')
 </template>
 
 <script>

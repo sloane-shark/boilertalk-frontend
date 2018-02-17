@@ -5,6 +5,7 @@ field(:label='label')
     :placeholder='placeholder'
     :value='value'
     @input='updateValue($event.target.value)'
+    autofocus
   )
 </template>
 
