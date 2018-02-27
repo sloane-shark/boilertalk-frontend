@@ -28,6 +28,12 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~bulma/sass/utilities/initial-variables'
+@import '~bulma/sass/utilities/functions'
+
+$primary: #FFDC46
+$primary-invert: findColorInvert($primary)
+
 @import '~bulma/bulma'
 @import '~bulma-divider/bulma-divider'
 </style>
