@@ -6,7 +6,7 @@
     setNameForm(v-if='participant === ""')
     template(v-else)
       postComposer
-      template(v-for='(post, index) in feed.posts')
+      template(v-for='(post, index) in shuffle(feed.posts)')
         post(:post='post' :date='new Date()' :index='index')
       p.subtitle.
         That's it! Please click to #[a(@click='submitResults({ feed, experimenterCode })') sign out]
@@ -43,6 +43,14 @@ export default {
   },
   methods: {
     ...mapActions([types.action.FETCH_LATEST_FEED, types.action.SUBMIT_RESULTS]),
+    shuffle(array) {
+      for (let i = array.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        // eslint-disable-next-line
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    },
   },
 };
 </script>

@@ -38,11 +38,13 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { createNamespacedHelpers, mapState as mapRootState } from 'vuex';
 import types from '@/store/modules/admin/types';
 import box from '@/components/box';
 import addResearcherModal from '@/components/admin/addResearcherModal';
 import changePasswordModal from '@/components/admin/changePasswordModal';
+
+const { mapState, mapActions } = createNamespacedHelpers('admin');
 
 export default {
   name: 'Researchers',
@@ -62,14 +64,14 @@ export default {
   },
   computed: {
     ...mapState({
-      researchers: state => state.admin.researchers,
-      user: state => state.authentication.researcher,
-      error: state => state.admin.error,
-      errorMessage: state => state.admin.errorMessage,
+      researchers: state => state.researchers,
+      error: state => state.error,
+      errorMessage: state => state.errorMessage,
     }),
+    ...mapRootState({ user: state => state.authentication.researcher }),
   },
   mounted() {
-    this.$store.dispatch(types.action.FETCH_RESEARCHERS);
+    this.fetchResearchers();
   },
 };
 </script>

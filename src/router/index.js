@@ -27,7 +27,7 @@ export default new Router({
     { path: '/done', name: 'Done', component: Done },
     { path: '/admin/feed', name: 'FeedSettings', component: FeedSettings, beforeEnter: verifyResearcher() },
     { path: '/admin/results', name: 'Results', component: Results, beforeEnter: verifyResearcher() },
-    { path: '/admin/results/:index', name: 'Results', component: ResultDetail, beforeEnter: verifyResearcher() },
+    { path: '/admin/results/:index', name: 'ResultDetail', component: ResultDetail, beforeEnter: verifyResearcher() },
     { path: '/admin/researchers', name: 'Researchers', component: Researchers, beforeEnter: verifyResearcher() },
     { path: '*', redirect: '/login' },
   ],

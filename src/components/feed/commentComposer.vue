@@ -4,7 +4,7 @@
     textArea(
       v-model='body'
       label='Comment'
-      placeholder='Blah blah blah...'
+      placeholder='Comment here!'
     )
     button.button.is-primary(@click='commentPostAndHide({ index, body })') Submit
     button.button.is-danger(@click='$emit("hideComposer")') Cancel
@@ -33,5 +33,5 @@ export default {
 
 <style lang="sass" scoped>
 .comment-composer
-  width: 25%
+  padding-left: 12rem
 </style>

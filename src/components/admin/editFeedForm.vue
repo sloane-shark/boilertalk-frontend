@@ -1,6 +1,6 @@
 <template lang="pug">
 .edit-feed
-  draggable(v-model='feed')
+  draggable(v-model='feed' @end='submitFeed(feed)')
     template(v-for='(post, index) in feed')
       post(:post='post' :date='new Date()' :index='index')
   button.button.is-primary(@click='submitFeed(feed)') Submit Feed
@@ -24,16 +24,16 @@ export default {
         return this.$store.state.admin.feed;
       },
       set(value) {
-        this.$store.commit(types.mutation.SET_FEED, value);
+        this.setFeed(value);
       },
     },
   },
   methods: {
-    ...mapActions([types.action.SUBMIT_FEED]),
-    ...mapMutations([types.mutation.RESET_FEED]),
+    ...mapActions([types.action.SUBMIT_FEED, types.action.FETCH_FEED]),
+    ...mapMutations([types.mutation.RESET_FEED, types.mutation.SET_FEED]),
   },
   mounted() {
-    this.$store.dispatch(`admin/${types.action.FETCH_FEED}`);
+    this.fetchFeed();
   },
 };
 </script>

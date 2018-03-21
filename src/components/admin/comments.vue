@@ -1,24 +1,30 @@
 <template lang="pug">
 .comments
-  .box
-    draggable(v-model='comments')
-      template(v-for='(comment, subindex) in comments')
-        .delete.is-pulled-right.is-small(@click='removeCommentFromPost({ index, subindex })')
-        p.has-text-weight-semibold {{ comment.author }}
-        p.content {{ comment.body }}
-        hr(v-if='subindex != comments.length - 1')
+  article.media
+    .media-content
+      draggable(
+        v-model='comments'
+        @end='$store.dispatch("admin/submitFeed", $store.state.admin.feed)'
+      )
+        template(v-for='(comment, subindex) in comments')
+          .contain
+            .delete.is-pulled-right.is-small(@click='removeCommentFromPost({ index, subindex })')
+            userMedia(:name='comment.author' :date='new Date()' small)
+              p.content {{ comment.body }}
+            hr
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
 import draggable from 'vuedraggable';
 import types from '@/store/modules/admin/types';
+import userMedia from '@/components/feed/userMedia';
 
 const { mapMutations } = createNamespacedHelpers('admin');
 
 export default {
   name: 'comments',
-  components: { draggable },
+  components: { draggable, userMedia },
   props: ['index'],
   computed: {
     comments: {
@@ -41,5 +47,12 @@ export default {
 
 <style lang="sass" scoped>
 .comments
-  width: 25%
+  padding-left: 12rem
+.contain
+  border-bottom: 0.1rem solid lightgray
+  padding-bottom: 1rem
+  margin-bottom: 1rem
+.contain:last-of-type
+  border-bottom: none
+  margin-bottom: 0
 </style>

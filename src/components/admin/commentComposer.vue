@@ -40,5 +40,5 @@ export default {
 
 <style lang="sass" scoped>
 .comment-composer
-  width: 25%
+  padding-left: 12rem
 </style>

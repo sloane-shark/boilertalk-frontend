@@ -1,25 +1,29 @@
 <template lang="pug">
 .comments
-  .box
-    template(v-for='(comment, subindex) in comments')
-      .delete.is-small.is-pulled-right(
-        @click='removeCommentFromPost({ index, subindex })'
-        v-if='comment.author === participant'
-      )
-      p.has-text-weight-semibold {{ comment.author }}
-      p.content {{ comment.body }}
-      hr(v-if='subindex != comments.length - 1')
+  article.media
+    .media-content
+      template(v-for='(comment, subindex) in comments')
+        .contain
+          .delete.is-small.is-pulled-right(
+            @click='removeCommentFromPost({ index, subindex })'
+            v-if='comment.author === participant'
+          )
+          userMedia(:name='comment.author' :date='new Date()' small)
+            p.content {{ comment.body }}
+          hr
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
 import types from '@/store/modules/feed/types';
+import userMedia from '@/components/feed/userMedia';
 
 const { mapMutations, mapState } = createNamespacedHelpers('feed');
 
 export default {
   name: 'comments',
   props: ['index'],
+  components: { userMedia },
   computed: {
     comments: {
       get() { return this.$store.state.feed.feed.posts[this.index].comments; },
@@ -34,5 +38,12 @@ export default {
 
 <style lang="sass" scoped>
 .comments
-  width: 25%
+  padding-left: 12rem
+.contain
+  border-bottom: 0.1rem solid lightgray
+  padding-bottom: 1rem
+  margin-bottom: 1rem
+.contain:last-of-type
+  border-bottom: none
+  margin-bottom: 0
 </style>

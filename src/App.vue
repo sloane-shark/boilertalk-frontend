@@ -21,8 +21,8 @@ export default {
   computed: {
     ...mapState({ loggedIn: state => state.loggedIn }),
   },
-  created() {
-    this.$store.dispatch(`authentication/${types.action.AUTH}`);
+  beforeCreate() {
+    if (!this.loggedIn) this.$store.dispatch(`authentication/${types.action.AUTH}`);
   },
 };
 </script>
