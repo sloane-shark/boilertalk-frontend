@@ -6,7 +6,7 @@
     setNameForm(v-if='participant === ""')
     template(v-else)
       postComposer
-      template(v-for='(post, index) in shuffle(feed.posts)')
+      template(v-for='(post, index) in feed.posts')
         post(:post='post' :date='new Date()' :index='index')
       p.subtitle.
         That's it! Please click to #[a(@click='submitResults({ feed, experimenterCode })') sign out]
@@ -21,7 +21,7 @@ import setNameForm from '@/components/feed/setNameForm';
 import postComposer from '@/components/feed/postComposer';
 import types from '@/store/modules/feed/types';
 
-const { mapState, mapActions } = createNamespacedHelpers('feed');
+const { mapState, mapActions, mapMutations } = createNamespacedHelpers('feed');
 
 export default {
   name: 'Feed',
@@ -42,7 +42,11 @@ export default {
     this.fetchLatestFeed();
   },
   methods: {
-    ...mapActions([types.action.FETCH_LATEST_FEED, types.action.SUBMIT_RESULTS]),
+    ...mapActions([
+      types.action.FETCH_LATEST_FEED,
+      types.action.SUBMIT_RESULTS,
+    ]),
+    ...mapMutations([types.mutation.SET_POSTS]),
     shuffle(array) {
       for (let i = array.length - 1; i > 0; i -= 1) {
         const j = Math.floor(Math.random() * (i + 1));

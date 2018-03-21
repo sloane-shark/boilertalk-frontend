@@ -29,7 +29,7 @@ const mutations = {
     state.feed.posts[index].dislikes -= 1;
   },
   commentPost(state, { index, body }) {
-    state.feed.posts[index].comments.push({ author: state.participant, body, user: true });
+    state.feed.posts[index].comments.unshift({ author: state.participant, body, user: true });
   },
   removeCommentFromPost(state, { index, subindex }) {
     state.feed.posts[index].comments.splice(subindex, 1);

@@ -9,7 +9,7 @@
           | Dislikes {{ post.dislikes }}
           | Comments {{ post.comments.length }}
       template(v-else-if='post.postType === "link"')
-        a(:href='post.link') {{ post.content }}
+        a(:href='post.link' target='_blank') {{ post.content }}
         p.
           Likes {{ post.likes }}
           | Dislikes {{ post.dislikes }}
